@@ -1,0 +1,104 @@
+﻿
+^ContentPage {
+	background-color: lightgray;
+}
+
+#NombreApp {
+	text-align: center;
+	font-style: bold;
+	font-size: medium;
+	font-family: Zurich;
+}
+
+stacklayout {
+	margin: 20;
+}
+
+.mainPageTitle {
+	font-style: bold;
+	font-size: medium;
+}
+
+.mainPageSubtitle {
+	margin-top: 15;
+}
+
+.detailPageTitle {
+	font-style: bold;
+	font-size: medium;
+	text-align: center;
+}
+
+.detailPageSubtitle {
+	text-align: center;
+	font-style: italic;
+}
+
+listview image {
+	height: 60;
+	width: 60;
+}
+
+button {
+	border-color: #74bc4d;
+	font-family: Zurich;
+	background-color: #74bc4d;
+	margin: 30,10;
+	color: white;
+	border-radius: 20%;
+	font-size: small;
+	font-style: bold;
+}
+
+entry {
+	margin: 30,10;
+	border-color: lightgray;
+}
+
+.TituloEdicion {
+	font-style: bold;
+	font-size: medium;
+	color: #2FC4CD;
+}
+.NumeroEdicion {
+	font-style: bold;
+	font-size: medium;
+	color: #2FC4CD;
+}
+
+.DescripcionEdicion {
+	font-size: small;
+	color: #CECECE;
+}
+
+.TituloArticulo {
+	font-style: bold;
+	font-size: small;
+	color: black;
+}
+
+.TextoArticulo {
+	font-size: small;
+	color: #CECECE;
+}
+
+.FechaArticulo {
+	font-size: small;
+	color: #CECECE;
+}
+
+.FechaEdicion {
+	font-size: small;
+	color: #CECECE;
+}
+
+.buttonEdicion {
+	border-color: #2FC4CD;
+	font-family: Zurich;
+	background-color: #2FC4CD;
+	margin: 5,5;
+	color: white;
+	border-radius: 20%;
+	font-size: small;
+	font-style: bold;
+}
