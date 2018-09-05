@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SOYDIT.ViewModels"
+             x:Class="SOYDIT.Views.Ediciones" 
+             Title="Ediciones">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:EdicionesPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content Padding="0,0,0,0">
+        <Grid x:Name="LayoutRoot" BackgroundColor="White" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ActivityIndicator Grid.Row="0"  IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy, Mode=TwoWay}" Grid.RowSpan="2" Color="Red" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Grid.Row="0"  Text="{Binding Message, Mode=OneWay}" TextColor="#0072BD"/>
+            <ListView  Grid.Row="1" ItemsSource="{Binding Revista.ListEdiciones, Mode=TwoWay}" HasUnevenRows="True" x:Name="ListaEdiciones" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="LayoutRoot" Padding="0" BackgroundColor="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*" />
+                                    <ColumnDefinition Width="65*" />
+                                </Grid.ColumnDefinitions>
+
+                                <ActivityIndicator Grid.Row="0"  IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy, Mode=TwoWay}" Grid.RowSpan="5" Color="Red" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Source="{Binding ImagenSourc}" Aspect="AspectFit" HeightRequest="204" WidthRequest="375"  VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Titulo}" HorizontalOptions="Start" class="TituloEdicion" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding NumeroEdicion, StringFormat='Edición No. {0}'}" class="NumeroEdicion" />
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Descripcion}" HorizontalOptions="Start" class="DescripcionEdicion" />
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Fecha, StringFormat='Publicación:  {0:dd/MM/yyyy}'}" class="FechaEdicion" HorizontalOptions="Start"/>
+                                <Button Grid.Row="4" Grid.Column="1" Text="VER" x:Name="EdicionBtn" Clicked="Button_Clicked" CommandParameter="{Binding IdEdicion}"  class="buttonEdicion" HorizontalOptions="Start"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

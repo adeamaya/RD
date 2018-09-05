@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"            
+             x:Class="SOYDIT.Views.MainPage">
+    <MasterDetailPage.Master>
+        <ContentPage
+            Title="Menú"
+            BackgroundColor="#EEEEEE"
+            Padding="0,40,0,0" >
+            <Label Text="Mi menú"/>
+            <ListView BackgroundColor="#EEEEEE" x:Name="ListMenu" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell TextColor="Black" DetailColor="Black" Height="25"
+                                   Text="{Binding TituloMenu}"
+                                   ImageSource="{Binding icono}">
+                        </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

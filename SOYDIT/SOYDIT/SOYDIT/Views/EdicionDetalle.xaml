@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SOYDIT.ViewModels"
+             x:Class="SOYDIT.Views.EdicionDetalle">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content Padding="0,0,0,0">
+        <Grid x:Name="LayoutRoot" BackgroundColor="White" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="6*" />
+            </Grid.ColumnDefinitions>
+
+            <ActivityIndicator Grid.Row="0"  IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy, Mode=TwoWay}" Grid.RowSpan="5" Color="Red" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="{Binding Edicion.ImagenSourc}" Aspect="AspectFit" Margin="5" HeightRequest="204" WidthRequest="375"  VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Edicion.Titulo}" HorizontalOptions="Start" class="TituloEdicion" />
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Edicion.NumeroEdicion, StringFormat='Edición No. {0}'}" class="NumeroEdicion" />
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Edicion.Descripcion}" HorizontalOptions="Start" class="DescripcionEdicion" />
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Edicion.Fecha, StringFormat='Publicación:  {0:dd/MM/yyyy}'}" class="FechaEdicion" HorizontalOptions="Start"/>
+            <Label Grid.Row="4" Grid.ColumnSpan="2"  Text="{Binding Message, Mode=OneWay}" TextColor="#0072BD"/>
+            <ListView  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Edicion.ListArticulos, Mode=TwoWay}" HasUnevenRows="True" x:Name="ListaArticulos" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="LayoutRoot" BackgroundColor="White" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*" />
+                                    <ColumnDefinition Width="65*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#CACAD8" >
+                                    <Image  Source="{Binding ImagenSourc}" Aspect="AspectFit" Margin="2" HeightRequest="244" WidthRequest="375"  VerticalOptions="Center" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Titulo}" HorizontalOptions="Start" class="TituloArticulo" />
+                                <BoxView Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#CACAD8" ></BoxView>
+                                <StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" >
+                                    <Image Source="iconoFecha.png" WidthRequest="20" HeightRequest="20" IsVisible="True" ></Image>
+                                    <Label Text="{Binding Fecha, StringFormat=' {0:dd/MM/yyyy}'}" class="FechaArticulo" />
+                                </StackLayout>
+                                <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                                    <Image Source="iconoVisualizaciones.png" WidthRequest="20" HeightRequest="20" IsVisible="True"></Image>
+                                    <Label Text="{Binding Visualizaciones, StringFormat=' {0} '}" class="FechaArticulo" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

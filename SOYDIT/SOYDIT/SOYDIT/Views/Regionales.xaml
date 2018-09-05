@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SOYDIT.ViewModels"
+             x:Class="SOYDIT.Views.Regionales"
+             Title="Regionales">
+    
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:RegionalesPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content Padding="0,0,0,0">
+        <Grid x:Name="LayoutRoot" BackgroundColor="White" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ActivityIndicator Grid.Row="0"  IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy, Mode=TwoWay}" Grid.RowSpan="5" Color="Red" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Image Grid.Row="0" Source="FotoRegionales.png" Aspect="AspectFit" HeightRequest="204" WidthRequest="375"  VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Grid.Row="1" Text="Regionales" HorizontalOptions="Start" class="TituloArticulo" />
+            <BoxView Grid.Row="2"  BackgroundColor="#CACAD8" ></BoxView>
+            <Label Grid.Row="2" Text="{Binding Message, Mode=OneWay}" TextColor="#0072BD"/>
+            <ListView  Grid.Row="3"  ItemsSource="{Binding ListRegionales, Mode=TwoWay}" HasUnevenRows="True" x:Name="ListaRegionales" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="LayoutRoot" BackgroundColor="White" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="5"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Row="0" BackgroundColor="White" >
+                                    <Image  Source="{Binding ImagenSourc}" Aspect="AspectFit" Margin="2" HeightRequest="244" WidthRequest="375"  VerticalOptions="Center" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <Label Grid.Row="1"  Text="{Binding Nombre}" HorizontalOptions="Start" class="TituloArticulo" />
+                                <BoxView Grid.Row="2" BackgroundColor="#CACAD8" ></BoxView>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

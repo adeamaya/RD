@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SOYDIT.ViewModels"
+             x:Class="SOYDIT.Views.Editorial"
+             Title="Editorial">
+    
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:EditorialViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content Padding="0,0,0,0">
+        <Grid x:Name="LayoutRoot" BackgroundColor="White" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ActivityIndicator Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="3"  IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy, Mode=TwoWay}" Grid.RowSpan="5" Color="Red" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Source="{Binding Articulo.ImagenSourc}" Aspect="AspectFit" Margin="5" HeightRequest="204" WidthRequest="375"  VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3"  Text="{Binding Articulo.Titulo}" HorizontalOptions="Start" class="TituloArticulo" />
+            <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#CACAD8" ></BoxView>
+            <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Message, Mode=OneWay}" TextColor="#0072BD"/>
+            <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
+                <Image Source="iconoFecha.png" WidthRequest="20" HeightRequest="20" IsVisible="True" ></Image>
+                <Label Text="{Binding Articulo.Fecha, StringFormat=' {0:dd/MM/yyyy}'}" class="FechaArticulo" />
+            </StackLayout>
+            <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                <Image Source="iconoVisualizaciones.png" WidthRequest="20" HeightRequest="20" IsVisible="True"></Image>
+                <Label Text="{Binding Articulo.Visualizaciones, StringFormat=' {0} '}" class="FechaArticulo" />
+            </StackLayout>
+            <StackLayout Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+                <Image Source="iconoCompartir.png" WidthRequest="20" HeightRequest="20" IsVisible="True"></Image>
+                <Label Text="Compartir" class="FechaArticulo" />
+            </StackLayout>
+            <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Articulo.Texto}" class="TextoArticulo" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

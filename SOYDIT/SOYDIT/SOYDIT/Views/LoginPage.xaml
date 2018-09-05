@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SOYDIT.ViewModels"
+             x:Class="SOYDIT.Views.LoginPage">
+        
+    <ContentPage.Resources>
+            <StyleSheet Source="/Assets/styles.css" />
+     </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:LoginPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid x:Name="LayoutRoot" BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ActivityIndicator Grid.Row="0"  IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy, Mode=TwoWay}" Grid.RowSpan="7" Color="Red" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Image Grid.Row="0" Source="{Binding Revista.LogoSourc, Mode=TwoWay}" Aspect="AspectFit" Margin="10" HeightRequest="300" WidthRequest="300"  VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Label Grid.Row="1" Text="{Binding Revista.Nombre, Mode=TwoWay}" x:Name="NombreApp" TextColor="#0072BD" HorizontalOptions="Center"/>
+        <Label Grid.Row="2" Text="¡Bienvenido de nuevo!" TextColor="#0072BD" HorizontalOptions="Center"/>
+        <Entry Grid.Row="3" Text="{Binding User.Email, Mode=TwoWay}" x:Name="EmailEntry" Placeholder="Tu usuario" Keyboard="Email" />
+        <Entry Grid.Row="4" Text="{Binding User.Password, Mode=TwoWay}" x:Name="PasswordEntry" Placeholder="Tu contraseña" IsPassword="True" />
+        <Button Grid.Row="5" Text="Ingresar" Command="{Binding LoginCommand}"/>
+        <Label Grid.Row="6" Text="{Binding Message, Mode=OneWay}" TextColor="#0072BD"/>
+        </Grid>
+</ContentPage>
